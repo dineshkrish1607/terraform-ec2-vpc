@@ -56,7 +56,7 @@ resource "aws_security_group" "my_sg" {
 
 # Create an EC2 Instance
 resource "aws_instance" "Ansible" {
-  ami           = "ami-Oc2af51e265bd5e0e" # Replace with a valid AMI ID for ap-south-1
+  ami           = "ami-0c2af51e265bd5e0e" # Replace with a valid AMI ID for ap-south-1
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_subnet.id
   security_groups = [aws_security_group.my_sg.id]
