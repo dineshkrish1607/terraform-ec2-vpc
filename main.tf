@@ -30,7 +30,7 @@ resource "aws_route_table" "my_route_table" {
 }
 
 # Associate the Route Table with the Subnet
-resource "aws_route_table_association" "main_route_table_assoc" {
+resource "aws_route_table_association" "my_route_table_assoc" {
   subnet_id      = aws_subnet.my_subnet.id
   route_table_id = aws_route_table.my_route_table.id
 }
@@ -55,13 +55,16 @@ resource "aws_security_group" "my_sg" {
 }
 
 # Create an EC2 Instance
-resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0" # Replace with your desired AMI ID
+resource "aws_instance" "Ansible" {
+  ami           = "ami-Oc2af51e265bd5e0e" # Replace with a valid AMI ID for ap-south-1
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_subnet.id
-  security_groups = [aws_security_group.my_sg.name]
+  security_groups = [aws_security_group.my_sg.id]
 
   tags = {
-    Name = "ExampleInstance"
+    Name = "Ansible VM"
   }
+
+  # Optional: Add an SSH key pair for access
+  key_name = "putty"  # Replace with your actual key pair name
 }
